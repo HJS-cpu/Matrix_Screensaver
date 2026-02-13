@@ -18,7 +18,7 @@ internal class ConfigDialog : Form
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.StartPosition = FormStartPosition.CenterScreen;
-        this.Size = new Size(420, 400);
+        this.Size = new Size(420, 380);
         this.BackColor = Color.FromArgb(30, 30, 30);
         this.ForeColor = Color.FromArgb(99, 216, 93);
         this.Font = new Font("Segoe UI", 9f);
@@ -45,7 +45,7 @@ internal class ConfigDialog : Form
             ForeColor = Color.FromArgb(99, 216, 93)
         };
         cmbVersion.Items.AddRange(new object[] {
-            "classic", "3d", "megacity", "operator", "nightmare",
+            "classic", "3D", "megacity", "operator", "nightmare",
             "paradise", "resurrections", "palimpsest", "twilight",
             "morpheus", "bugs", "trinity", "1999", "2003", "2021",
             "throwback", "updated"
@@ -170,20 +170,39 @@ internal class ConfigDialog : Form
             FlatStyle = FlatStyle.Flat
         };
 
-        var lblRezmason = new Label
+        var lblProjekt = new Label
         {
-            Text = "Projekt von Rezmason",
-            Location = new Point(20, y - 10),
-            Size = new Size(160, 16),
+            Text = "Projekt by",
+            Location = new Point(20, y + 2),
+            AutoSize = true,
             ForeColor = Color.FromArgb(99, 216, 93),
             Font = new Font("Segoe UI", 8f)
         };
 
-        var lblCreditPrefix = new Label
+        var lnkRezmason = new LinkLabel
+        {
+            Text = "Rezmason",
+            Location = new Point(80, y + 2),
+            AutoSize = true,
+            LinkColor = Color.FromArgb(130, 230, 130),
+            ActiveLinkColor = Color.White,
+            VisitedLinkColor = Color.FromArgb(130, 230, 130),
+            Font = new Font("Segoe UI", 8f)
+        };
+        lnkRezmason.LinkClicked += (s, e) =>
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://github.com/Rezmason/matrix",
+                UseShellExecute = true
+            });
+        };
+
+        var lblCooked = new Label
         {
             Text = "(C)ooked by",
-            Location = new Point(20, y + 5),
-            Size = new Size(75, 16),
+            Location = new Point(20, y + 16),
+            AutoSize = true,
             ForeColor = Color.FromArgb(99, 216, 93),
             Font = new Font("Segoe UI", 8f)
         };
@@ -191,8 +210,8 @@ internal class ConfigDialog : Form
         var lnkHJS = new LinkLabel
         {
             Text = "HJS",
-            Location = new Point(93, y + 5),
-            Size = new Size(30, 16),
+            Location = new Point(88, y + 16),
+            AutoSize = true,
             LinkColor = Color.FromArgb(130, 230, 130),
             ActiveLinkColor = Color.White,
             VisitedLinkColor = Color.FromArgb(130, 230, 130),
@@ -207,8 +226,9 @@ internal class ConfigDialog : Form
             });
         };
 
-        this.Controls.Add(lblRezmason);
-        this.Controls.Add(lblCreditPrefix);
+        this.Controls.Add(lblProjekt);
+        this.Controls.Add(lnkRezmason);
+        this.Controls.Add(lblCooked);
         this.Controls.Add(lnkHJS);
         this.Controls.Add(btnOk);
         this.Controls.Add(btnCancel);
