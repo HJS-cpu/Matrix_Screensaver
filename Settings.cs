@@ -58,7 +58,7 @@ internal static class Settings
     {
         var parts = new List<string>
         {
-            $"version={Version}",
+            $"version={Version.ToLower()}",
             $"volumetric={Volumetric.ToString().ToLower()}",
             $"animationSpeed={AnimationSpeed.ToString(System.Globalization.CultureInfo.InvariantCulture)}",
             $"skipIntro={SkipIntro.ToString().ToLower()}",

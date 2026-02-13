@@ -45,10 +45,10 @@ internal class ConfigDialog : Form
             ForeColor = Color.FromArgb(99, 216, 93)
         };
         cmbVersion.Items.AddRange(new object[] {
-            "classic", "3D", "megacity", "operator", "nightmare",
-            "paradise", "resurrections", "palimpsest", "twilight",
-            "morpheus", "bugs", "trinity", "1999", "2003", "2021",
-            "throwback", "updated"
+            "Classic", "3D", "Megacity", "Operator", "Nightmare",
+            "Paradise", "Resurrections", "Palimpsest", "Twilight",
+            "Morpheus", "Bugs", "Trinity", "1999", "2003", "2021",
+            "Throwback", "Updated"
         });
         this.Controls.Add(cmbVersion);
         y += 40;
@@ -182,7 +182,7 @@ internal class ConfigDialog : Form
         var lnkRezmason = new LinkLabel
         {
             Text = "Rezmason",
-            Location = new Point(72, y + 2),
+            Location = new Point(88, y + 2),
             AutoSize = true,
             LinkColor = Color.FromArgb(130, 230, 130),
             ActiveLinkColor = Color.White,
