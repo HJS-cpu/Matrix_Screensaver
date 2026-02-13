@@ -172,7 +172,7 @@ internal class ConfigDialog : Form
 
         var lblProjekt = new Label
         {
-            Text = "Projekt by",
+            Text = "Project by",
             Location = new Point(20, y + 2),
             AutoSize = true,
             ForeColor = Color.FromArgb(99, 216, 93),
@@ -182,7 +182,7 @@ internal class ConfigDialog : Form
         var lnkRezmason = new LinkLabel
         {
             Text = "Rezmason",
-            Location = new Point(80, y + 2),
+            Location = new Point(72, y + 2),
             AutoSize = true,
             LinkColor = Color.FromArgb(130, 230, 130),
             ActiveLinkColor = Color.White,
