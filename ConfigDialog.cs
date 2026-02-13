@@ -18,7 +18,7 @@ internal class ConfigDialog : Form
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.StartPosition = FormStartPosition.CenterScreen;
-        this.Size = new Size(420, 380);
+        this.Size = new Size(420, 400);
         this.BackColor = Color.FromArgb(30, 30, 30);
         this.ForeColor = Color.FromArgb(99, 216, 93);
         this.Font = new Font("Segoe UI", 9f);
@@ -93,7 +93,7 @@ internal class ConfigDialog : Form
         y += 50;
 
         // Resolution
-        AddLabel("Aufloesung:", 20, y + 2);
+        AddLabel("Auflösung:", 20, y + 2);
         trkResolution = new TrackBar
         {
             Location = new Point(controlX, y),
@@ -137,7 +137,7 @@ internal class ConfigDialog : Form
         // Skip Intro
         chkSkipIntro = new CheckBox
         {
-            Text = "Intro ueberspringen",
+            Text = "Intro überspringen",
             Location = new Point(controlX, y),
             Size = new Size(controlWidth, 25),
             ForeColor = Color.FromArgb(99, 216, 93)
@@ -170,16 +170,46 @@ internal class ConfigDialog : Form
             FlatStyle = FlatStyle.Flat
         };
 
-        var lblCredit = new Label
+        var lblRezmason = new Label
         {
-            Text = "(C)ooked by HJS",
-            Location = new Point(20, y + 5),
-            Size = new Size(130, 20),
+            Text = "Projekt von Rezmason",
+            Location = new Point(20, y - 10),
+            Size = new Size(160, 16),
             ForeColor = Color.FromArgb(99, 216, 93),
             Font = new Font("Segoe UI", 8f)
         };
 
-        this.Controls.Add(lblCredit);
+        var lblCreditPrefix = new Label
+        {
+            Text = "(C)ooked by",
+            Location = new Point(20, y + 5),
+            Size = new Size(75, 16),
+            ForeColor = Color.FromArgb(99, 216, 93),
+            Font = new Font("Segoe UI", 8f)
+        };
+
+        var lnkHJS = new LinkLabel
+        {
+            Text = "HJS",
+            Location = new Point(93, y + 5),
+            Size = new Size(30, 16),
+            LinkColor = Color.FromArgb(130, 230, 130),
+            ActiveLinkColor = Color.White,
+            VisitedLinkColor = Color.FromArgb(130, 230, 130),
+            Font = new Font("Segoe UI", 8f)
+        };
+        lnkHJS.LinkClicked += (s, e) =>
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://github.com/HJS-cpu/Matrix_Screensaver",
+                UseShellExecute = true
+            });
+        };
+
+        this.Controls.Add(lblRezmason);
+        this.Controls.Add(lblCreditPrefix);
+        this.Controls.Add(lnkHJS);
         this.Controls.Add(btnOk);
         this.Controls.Add(btnCancel);
         this.AcceptButton = btnOk;
