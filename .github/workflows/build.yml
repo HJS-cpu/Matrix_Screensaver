@@ -29,10 +29,12 @@ jobs:
         run: Copy-Item -Recurse web publish/web
         shell: pwsh
 
+      - name: Remove unnecessary exe
+        run: Remove-Item publish/Matrix.exe
+        shell: pwsh
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Matrix-Screensaver
-          path: |
-            publish/Matrix.scr
-            publish/web/
+          path: publish/
