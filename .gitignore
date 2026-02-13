@@ -1,0 +1,7 @@
+publish/
+.claude/
+CLAUDE.md
+bin/
+obj/
+*.user
+*.suo
