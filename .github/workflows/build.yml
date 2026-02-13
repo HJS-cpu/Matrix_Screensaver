@@ -1,0 +1,38 @@
+name: Build Matrix Screensaver
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Publish
+        run: dotnet publish Matrix.csproj -c Release -r win-x64 --self-contained false -o publish
+
+      - name: Rename exe to scr
+        run: Copy-Item publish/Matrix.exe publish/Matrix.scr
+        shell: pwsh
+
+      - name: Copy web assets
+        run: Copy-Item -Recurse web publish/web
+        shell: pwsh
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Matrix-Screensaver
+          path: |
+            publish/Matrix.scr
+            publish/web/
