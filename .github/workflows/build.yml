@@ -37,9 +37,14 @@ jobs:
           Remove-Item publish/runtimes -Recurse -ErrorAction SilentlyContinue
         shell: pwsh
 
+      - name: Install NSIS
+        run: choco install nsis -y --no-progress
+        shell: pwsh
+
       - name: Build NSIS Installer
         run: |
-          & "${env:ProgramFiles(x86)}\NSIS\makensis.exe" /NOCD installer\MatrixScreensaver.nsi
+          $env:PATH += ";${env:ProgramFiles(x86)}\NSIS\Bin;${env:ProgramFiles(x86)}\NSIS"
+          makensis /NOCD installer\MatrixScreensaver.nsi
         shell: pwsh
 
       - name: Upload Artifact
