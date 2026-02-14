@@ -29,8 +29,17 @@ jobs:
         run: Copy-Item -Recurse web publish/web
         shell: pwsh
 
-      - name: Remove unnecessary exe
-        run: Remove-Item publish/Matrix.exe
+      - name: Clean up unnecessary files
+        run: |
+          Remove-Item publish/Matrix.exe
+          Remove-Item publish/*.pdb -ErrorAction SilentlyContinue
+          Remove-Item publish/*.xml -ErrorAction SilentlyContinue
+          Remove-Item publish/runtimes -Recurse -ErrorAction SilentlyContinue
+        shell: pwsh
+
+      - name: Build NSIS Installer
+        run: |
+          & "${env:ProgramFiles(x86)}\NSIS\makensis.exe" /NOCD installer\MatrixScreensaver.nsi
         shell: pwsh
 
       - name: Upload Artifact
@@ -38,3 +47,9 @@ jobs:
         with:
           name: Matrix-Screensaver
           path: publish/
+
+      - name: Upload Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: Matrix-Screensaver-Setup
+          path: installer/MatrixScreensaverSetup.exe
