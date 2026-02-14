@@ -25,7 +25,7 @@
 ; --- General ---
 Name "${PRODUCT_NAME}"
 OutFile "installer\MatrixScreensaverSetup.exe"
-InstallDir "$PROGRAMDATA\Matrix"
+InstallDir "C:\ProgramData\Matrix"
 RequestExecutionLevel admin
 SetCompressor /SOLID lzma
 
@@ -104,6 +104,20 @@ LangString RuntimeWarning ${LANG_GERMAN} "Warnung: Fehlende Laufzeitumgebungen m
 
 LangString PreviousInstall ${LANG_ENGLISH} "${PRODUCT_NAME} is already installed.$\nDo you want to uninstall the previous version first?"
 LangString PreviousInstall ${LANG_GERMAN} "${PRODUCT_NAME} ist bereits installiert.$\nSoll die vorherige Version zuerst deinstalliert werden?"
+
+; ============================================================================
+; Init Functions
+; ============================================================================
+
+Function .onInit
+    !insertmacro MUI_LANGDLL_DISPLAY
+    ; Resolve %ProgramData% properly (NSIS has no $PROGRAMDATA constant)
+    ExpandEnvStrings $INSTDIR "%ProgramData%\Matrix"
+FunctionEnd
+
+Function un.onInit
+    !insertmacro MUI_UNGETLANGUAGE
+FunctionEnd
 
 ; ============================================================================
 ; Runtime Detection Functions
