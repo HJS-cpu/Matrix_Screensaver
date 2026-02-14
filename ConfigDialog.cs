@@ -13,7 +13,7 @@ internal class ConfigDialog : Form
 
     public ConfigDialog()
     {
-        this.Text = "Matrix - Einstellungen";
+        this.Text = "Matrix - Settings";
         this.FormBorderStyle = FormBorderStyle.FixedDialog;
         this.MaximizeBox = false;
         this.MinimizeBox = false;
@@ -56,17 +56,17 @@ internal class ConfigDialog : Form
         // Volumetric
         chkVolumetric = new CheckBox
         {
-            Text = "Volumetrischer 3D-Effekt",
+            Text = "Volumetric 3D Effect",
             Location = new Point(controlX, y),
             Size = new Size(controlWidth, 25),
             ForeColor = Color.FromArgb(99, 216, 93)
         };
-        AddLabel("3D-Modus:", 20, y + 2);
+        AddLabel("3D Mode:", 20, y + 2);
         this.Controls.Add(chkVolumetric);
         y += 40;
 
         // Animation Speed
-        AddLabel("Geschwindigkeit:", 20, y + 2);
+        AddLabel("Speed:", 20, y + 2);
         trkSpeed = new TrackBar
         {
             Location = new Point(controlX, y),
@@ -93,7 +93,7 @@ internal class ConfigDialog : Form
         y += 50;
 
         // Resolution
-        AddLabel("Auflösung:", 20, y + 2);
+        AddLabel("Resolution:", 20, y + 2);
         trkResolution = new TrackBar
         {
             Location = new Point(controlX, y),
@@ -120,7 +120,7 @@ internal class ConfigDialog : Form
         y += 50;
 
         // Columns
-        AddLabel("Spalten:", 20, y + 2);
+        AddLabel("Columns:", 20, y + 2);
         nudColumns = new NumericUpDown
         {
             Location = new Point(controlX, y),
@@ -137,7 +137,7 @@ internal class ConfigDialog : Form
         // Skip Intro
         chkSkipIntro = new CheckBox
         {
-            Text = "Intro überspringen",
+            Text = "Skip Intro",
             Location = new Point(controlX, y),
             Size = new Size(controlWidth, 25),
             ForeColor = Color.FromArgb(99, 216, 93)
@@ -161,7 +161,7 @@ internal class ConfigDialog : Form
 
         var btnCancel = new Button
         {
-            Text = "Abbrechen",
+            Text = "Cancel",
             DialogResult = DialogResult.Cancel,
             Location = new Point(this.ClientSize.Width - 100, y),
             Size = new Size(80, 30),
