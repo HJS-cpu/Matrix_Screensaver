@@ -110,13 +110,8 @@ LangString PreviousInstall ${LANG_GERMAN} "${PRODUCT_NAME} ist bereits installie
 ; ============================================================================
 
 Function .onInit
-    !insertmacro MUI_LANGDLL_DISPLAY
     ; Resolve %ProgramData% properly (NSIS has no $PROGRAMDATA constant)
     ExpandEnvStrings $INSTDIR "%ProgramData%\Matrix"
-FunctionEnd
-
-Function un.onInit
-    !insertmacro MUI_UNGETLANGUAGE
 FunctionEnd
 
 ; ============================================================================
