@@ -182,7 +182,7 @@ internal class ConfigDialog : Form
         var lnkRezmason = new LinkLabel
         {
             Text = "Rezmason",
-            Location = new Point(120, y + 2),
+            Location = new Point(135, y + 2),
             AutoSize = true,
             LinkColor = Color.FromArgb(130, 230, 130),
             ActiveLinkColor = Color.White,
