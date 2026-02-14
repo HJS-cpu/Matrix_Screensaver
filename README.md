@@ -23,7 +23,15 @@ Windows Screensaver (.scr) that displays the [Matrix Digital Rain](https://githu
 
 ## Installation
 
-1. Download the **Matrix-Screensaver** artifact from [GitHub Releases](../../releases)
+### Installer (Recommended)
+
+1. Download **MatrixScreensaverSetup.exe** from [GitHub Releases](../../releases)
+2. Run the installer — it checks for required runtimes and installs everything automatically
+3. Optionally set Matrix as your active screensaver on the finish page
+
+### Manual
+
+1. Download the **Matrix-Screensaver-v1.0.zip** artifact from [GitHub Releases](../../releases)
 2. Extract the ZIP
 3. Right-click `Matrix.scr` → **Install**
 
