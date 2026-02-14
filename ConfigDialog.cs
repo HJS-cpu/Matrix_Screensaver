@@ -170,24 +170,28 @@ internal class ConfigDialog : Form
             FlatStyle = FlatStyle.Flat
         };
 
+        var creditFont = new Font("Segoe UI", 8f);
+        int linkGap = 2;
+
         var lblProjekt = new Label
         {
             Text = "Matrix Web-App by",
             Location = new Point(20, y + 2),
             AutoSize = true,
             ForeColor = Color.FromArgb(99, 216, 93),
-            Font = new Font("Segoe UI", 8f)
+            Font = creditFont
         };
+        int rezmasonX = 20 + TextRenderer.MeasureText(lblProjekt.Text, creditFont).Width - 4 + linkGap;
 
         var lnkRezmason = new LinkLabel
         {
             Text = "Rezmason",
-            Location = new Point(135, y + 2),
+            Location = new Point(rezmasonX, y + 2),
             AutoSize = true,
             LinkColor = Color.FromArgb(130, 230, 130),
             ActiveLinkColor = Color.White,
             VisitedLinkColor = Color.FromArgb(130, 230, 130),
-            Font = new Font("Segoe UI", 8f)
+            Font = creditFont
         };
         lnkRezmason.LinkClicked += (s, e) =>
         {
@@ -204,18 +208,19 @@ internal class ConfigDialog : Form
             Location = new Point(20, y + 16),
             AutoSize = true,
             ForeColor = Color.FromArgb(99, 216, 93),
-            Font = new Font("Segoe UI", 8f)
+            Font = creditFont
         };
+        int hjsX = 20 + TextRenderer.MeasureText(lblCooked.Text, creditFont).Width - 4 + linkGap;
 
         var lnkHJS = new LinkLabel
         {
             Text = "HJS",
-            Location = new Point(88, y + 16),
+            Location = new Point(hjsX, y + 16),
             AutoSize = true,
             LinkColor = Color.FromArgb(130, 230, 130),
             ActiveLinkColor = Color.White,
             VisitedLinkColor = Color.FromArgb(130, 230, 130),
-            Font = new Font("Segoe UI", 8f)
+            Font = creditFont
         };
         lnkHJS.LinkClicked += (s, e) =>
         {
