@@ -114,6 +114,7 @@ Function CheckDotNet8
     StrCpy $DotNetVersion ""
     SetRegView 64
 
+    ; Method 1: Registry enumeration
     StrCpy $1 0
     ${Do}
         EnumRegValue $2 HKLM "SOFTWARE\dotnet\Setup\InstalledVersions\x64\sharedfx\Microsoft.WindowsDesktop.App" $1
@@ -124,9 +125,17 @@ Function CheckDotNet8
         ${If} $3 == "8."
             StrCpy $DotNetFound 1
             StrCpy $DotNetVersion $2
+            Return
         ${EndIf}
         IntOp $1 $1 + 1
     ${Loop}
+
+    ; Method 2: Fallback — check file system via native 64-bit Program Files
+    ExpandEnvStrings $0 "%ProgramW6432%"
+    IfFileExists "$0\dotnet\shared\Microsoft.WindowsDesktop.App\8.*" 0 done
+        StrCpy $DotNetFound 1
+        StrCpy $DotNetVersion "8.x"
+    done:
 FunctionEnd
 
 Function CheckWebView2
@@ -249,6 +258,9 @@ Section "Install" SecInstall
     ${EndIf}
 
     ; --- Copy web assets to ProgramData\Matrix\ ---
+    ; Remove old web assets first to avoid overwrite errors
+    RMDir /r "$INSTDIR\web"
+    SetOverwrite on
     SetOutPath "$INSTDIR"
     File /r "publish\web"
 
