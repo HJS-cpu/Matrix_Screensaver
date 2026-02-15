@@ -58,3 +58,13 @@ jobs:
         with:
           name: Matrix-Screensaver-Setup
           path: installer/MatrixScreensaverSetup.exe
+
+      - name: Zip Installer
+        run: Compress-Archive -Path installer/MatrixScreensaverSetup.exe -DestinationPath installer/Matrix-Screensaver-Setup.zip
+        shell: pwsh
+
+      - name: Upload Installer ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Matrix-Screensaver-Setup-ZIP
+          path: installer/Matrix-Screensaver-Setup.zip
